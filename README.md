@@ -10,6 +10,33 @@ This script calculates the Daily Volume-Weighted Average Price (VWAP) for a give
 - Calculates the Daily VWAP based on the OHLCV data.
 - Saves the fetched pools data, the selected deepest pool, and the OHLCV data into JSON files for verification.
 
+## Methodology 
+### VWAP Calculation 
+This script calculates the daily Volume-Weighted Average Price (VWAP) for a given token by analyzing its most liquid trading pool. The calculation is based on 288 five-minute OHLCV (Open, High, Low, Close, Volume) candles, covering a full 24-hour period.
+
+### Formula
+The VWAP is calculated using the following formula, which weights the price by the volume traded in each interval:
+<img width="327" height="85" alt="image" src="https://github.com/user-attachments/assets/64c77655-988e-4422-8bb0-539346827b2c" />
+
+
+Breakdown of the Formula
+VWAP: Volume-Weighted Average Price.
+
+n: The total number of periods (candles) considered, which is 288 for a full day of 5-minute intervals.
+
+i: Represents each individual 5-minute period.
+
+H<sub>i</sub>: The High price during period i.
+
+L<sub>i</sub>: The Low price during period i.
+
+C<sub>i</sub>: The Close price during period i.
+
+V<sub>i</sub>: The trading Volume during period i.
+
+The term (H_i + L_i + C_i) / 3 is the Typical Price for that period. In short, the formula calculates the total value traded (approximated by Typical Price × Volume) and divides it by the total volume traded.
+
+
 ## How to Use
 
 1. **Clone the repository.**
